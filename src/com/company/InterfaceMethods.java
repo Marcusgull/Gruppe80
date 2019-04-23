@@ -8,6 +8,4 @@ public class InterfaceMethods {
     public void initialize(){
 
     }
-
-
 }
