@@ -8,4 +8,8 @@ public class InterfaceMethods {
     public void initialize(){
 
     }
+
+    public void Login(){
+        System.out.println("Logger inn");
+    }
 }
