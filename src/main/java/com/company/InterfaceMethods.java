@@ -1,11 +1,7 @@
 package com.company;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-import javafx.fxml.FXML;
-
 public class InterfaceMethods {
 
-    @FXML
     public void initialize(){
 
     }
@@ -13,5 +9,7 @@ public class InterfaceMethods {
     public void Login(){
         System.out.println("Logger inn");
     }
-
+    public void tall (int a){
+        System.out.println(a+1);
+    }
 }

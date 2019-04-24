@@ -1,5 +1,6 @@
 package com.company;
 
+
 public class Arbeidsgiver {
     private String adresse;
     private String bransje;
