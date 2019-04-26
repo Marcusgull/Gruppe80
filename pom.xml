@@ -96,7 +96,6 @@
                     <mainClass>com.company.Main</mainClass>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -119,6 +118,17 @@
                 </executions>
             </plugin>
         </plugins>
+            <resources>
+                <resource>
+                    <filtering>false</filtering>
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.fxml</include>
+                    </includes>
+                </resource>
+            </resources>
     </build>
+
+
 
 </project>
