@@ -1,0 +1,5 @@
+com\company\Controller\InterfaceController.class
+com\company\model\Arbeidsgiver.class
+com\company\model\Arbeidsforhold.class
+com\company\model\Jobbsoker.class
+com\company\model\LedigeVikariater.class

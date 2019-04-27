@@ -1,4 +1,5 @@
-package com.company;
+package com.company.model;
+
 
 public class Arbeidsgiver {
     private String adresse;
