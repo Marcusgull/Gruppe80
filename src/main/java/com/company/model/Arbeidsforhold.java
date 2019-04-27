@@ -1,5 +1,5 @@
 
-package com.company;
+package com.company.model;
 
 public class Arbeidsforhold {
     private Jobbsoker vikar;

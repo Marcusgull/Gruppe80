@@ -1,9 +1,11 @@
-package com.company;
+package com.company.model;
+
+import com.company.model.Arbeidsgiver;
 
 public class LedigeVikariater {
     private String Sektor;
     private String Sted;
-    private Arbeidsgiver Arbeidsgiver;
+    private com.company.model.Arbeidsgiver Arbeidsgiver;
     private String Jobbkategori;
     private String Varighet;
     private int Arbeidstid;
