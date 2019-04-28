@@ -6,16 +6,14 @@ import javafx.scene.control.Label;
 
 public class FXMLController {
 
-    @FXML
-    private Label label;
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    public void hei(){
+        System.out.println("hei!");
     }
-
+    @FXML
+    private void vedKlikk(ActionEvent event){
+        System.exit(0);
+    }
     public void initialize() {
-        // TODO
+
     }
 }

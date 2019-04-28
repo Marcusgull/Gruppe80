@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
-    <children>
-        <Button layoutX="126" layoutY="90" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Button layoutX="133.0" layoutY="37.0" mnemonicParsing="false" text="Button" />
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FXMLController">
+   <children>
+      <ComboBox layoutX="446.0" layoutY="156.0" prefWidth="150.0" promptText="Erfaring" />
+      <Label layoutX="349.0" layoutY="23.0" text="Vikarbyrå">
+         <font>
+            <Font name="Calibri Bold" size="32.0" />
+         </font>
+      </Label>
+      <TextField layoutX="212.0" layoutY="156.0" promptText="Etternavn" />
+      <TextField layoutX="212.0" layoutY="210.0" promptText="tlf" />
+      <TextField layoutX="212.0" layoutY="266.0" promptText="Email" />
+      <TextField layoutX="212.0" layoutY="324.0" promptText="Jobb Kategori" />
+      <TextField layoutX="212.0" layoutY="102.0" promptText="Fornavn" />
+      <TextField layoutX="446.0" layoutY="102.0" promptText="Alder" />
+      <Separator layoutX="314.0" layoutY="67.0" prefWidth="200.0" />
+      <ToggleButton layoutX="584.0" layoutY="23.0" mnemonicParsing="false" onAction="#vedKlikk" text="AvKnapp" />
+      <TreeView layoutY="67.0" prefHeight="333.0" prefWidth="200.0" />
+   </children>
 </AnchorPane>
