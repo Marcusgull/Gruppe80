@@ -1,11 +1,15 @@
-package com.company.Controller;
+package com.company.org.openjfx;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 
 public class InterfaceController {
 
     @FXML
     public void Hei(){
         System.out.println("hei");
+    }
+
+    public void initialize() {
+        // TODO
     }
 }

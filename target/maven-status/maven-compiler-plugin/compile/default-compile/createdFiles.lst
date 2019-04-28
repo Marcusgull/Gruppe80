@@ -1,5 +1,11 @@
-com\company\Controller\InterfaceController.class
-com\company\model\Arbeidsgiver.class
+com\company\org\openjfx\InterfaceController.class
+com\company\org\openjfx\Main.class
 com\company\model\Arbeidsforhold.class
-com\company\model\Jobbsoker.class
+com\company\lagring\CSV.class
 com\company\model\LedigeVikariater.class
+com\company\lagring\JOBJ.class
+com\company\model\Arbeidsgiver.class
+module-info.class
+com\company\model\Jobbsoker.class
+com\company\lagring\filLagringInnhold.class
+com\company\lagring\FilLagringStrategy.class
