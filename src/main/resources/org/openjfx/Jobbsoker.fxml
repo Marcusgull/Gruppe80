@@ -6,9 +6,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
+            fx:controller="org.openjfx.JobbsokerController"
             prefHeight="400.0" prefWidth="600.0">
-
+    <children>
+        <Pane prefHeight="90.0" prefWidth="700.0" style="-fx-background-color: #00e8e8;">
+            <children>
+                <Label layoutX="34.0" layoutY="22.0" text="Registrer ny:">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                </Label>
+                <Button layoutX="267.0" layoutY="33.0" mnemonicParsing="false" text="Arbeidsgiver" />
+                <Button layoutX="398.0" layoutY="31.0" mnemonicParsing="false" text="Jobbsøker" />
+                <Button layoutX="519.0" layoutY="31.0" mnemonicParsing="false" text="Vikariat" />
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

@@ -2,10 +2,13 @@ modeller\Arbeidsgiver.class
 modeller\LedigeVikariater.class
 lagring\JOBJ.class
 lagring\CSV.class
+org\openjfx\VikariatController.class
 lagring\filLagringInnhold.class
 modeller\Jobbsoker.class
 modeller\Arbeidsforhold.class
 org\openjfx\Main.class
+org\openjfx\ArbeidsgiverController.class
 org\openjfx\FXMLController.class
 module-info.class
+org\openjfx\JobbsokerController.class
 lagring\FilLagringStrategy.class
