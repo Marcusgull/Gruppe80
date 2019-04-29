@@ -37,7 +37,7 @@ public class JobbsokerController {
 
     //Metode for scenebytte til vikariat
     public void byttSceneVikariat(ActionEvent event) throws IOException {
-        Parent VikariatParent = FXMLLoader.load(getClass().getResource("Arbeidsgiver.fxml"));
+        Parent VikariatParent = FXMLLoader.load(getClass().getResource("Vikariat.fxml"));
         Scene VikariatScene = new Scene(VikariatParent);
 
         //henter stage informasjon
