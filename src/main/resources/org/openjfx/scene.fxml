@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -35,6 +37,17 @@
                   </Pane>
                </children>
             </HBox>
+         </children>
+      </Pane>
+      <Pane layoutY="90.0" prefHeight="310.0" prefWidth="700.0">
+         <children>
+            <TableView prefHeight="310.0" prefWidth="700.0">
+              <columns>
+                <TableColumn prefWidth="164.0" text="Elementer(navn)" />
+                <TableColumn prefWidth="135.0" text="Tid lagret?" />
+                  <TableColumn prefWidth="120.0" text="størrelse?" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </children>
