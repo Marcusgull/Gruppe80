@@ -4,6 +4,7 @@ lagring\JOBJ.class
 lagring\CSV.class
 org\openjfx\VikariatController.class
 lagring\filLagringInnhold.class
+modeller\Arbeidsgiver$Arbeidsmodell.class
 modeller\Jobbsoker.class
 modeller\Arbeidsforhold.class
 org\openjfx\Main.class

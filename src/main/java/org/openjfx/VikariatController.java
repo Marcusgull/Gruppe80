@@ -1,24 +1,28 @@
 package org.openjfx;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import modeller.Arbeidsgiver;
 
 import java.io.IOException;
 
 public class VikariatController {
-    //Metode for scenebytte til HovedScenen
+
+    //bytter scene til forsiden
     public void byttSceneHoved(ActionEvent event) throws IOException {
-        Parent HovedParent = FXMLLoader.load(getClass().getResource("scene.fxml"));
-        Scene HovedScene = new Scene(HovedParent);
+        Parent hovedParent = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        Scene JobbsokerScene = new Scene(hovedParent);
 
         //henter stage informasjon
-        Stage HovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        HovedStage.setScene(HovedScene);
-        HovedStage.show();
+        Stage hovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        hovedStage.setScene(JobbsokerScene);
+        hovedStage.show();
     }
 
     public void byttSceneArbeidsgiver(ActionEvent event) throws IOException {

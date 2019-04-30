@@ -5,21 +5,48 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modeller.Arbeidsgiver;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.stream.Collectors;
 
 public class ArbeidsgiverController {
 
-    //Metode for scenebytte til HovedScenen
-    public void byttSceneHoved(ActionEvent event) throws IOException {
-        Parent HovedParent = FXMLLoader.load(getClass().getResource("scene.fxml"));
-        Scene HovedScene = new Scene(HovedParent);
+    public void initialize(){ }
 
+    @FXML
+    private ListView<Arbeidsgiver> listView;
+
+    @FXML
+    private TextField adresse;
+    @FXML
+    private TextField bransje;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField tlf;
+
+    public void leggTil() {
+        Arbeidsgiver arbeidsgiver = new Arbeidsgiver();
+        arbeidsgiver.Adresse.setValue(adresse.getText());
+        arbeidsgiver.Bransje.setValue(bransje.getText());
+        arbeidsgiver.Email.setValue(email.getText());
+        arbeidsgiver.Tlf.setValue(tlf.getText());
+        listView.getItems().add(arbeidsgiver);
+    }
+
+    //bytter scene til forsiden
+    public void byttSceneHoved(ActionEvent event) throws IOException {
+        Parent hovedParent = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        Scene JobbsokerScene = new Scene(hovedParent);
         //henter stage informasjon
-        Stage HovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        HovedStage.setScene(HovedScene);
-        HovedStage.show();
+
+        Stage hovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        hovedStage.setScene(JobbsokerScene);
+        hovedStage.show();
     }
 
     //Metode for scenebytte til Jobbsøker

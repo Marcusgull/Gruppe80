@@ -5,22 +5,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import modeller.Jobbsoker;
 
 import java.io.IOException;
 
 public class JobbsokerController {
 
 
-    //Metode for scenebytte til HovedScenen
+    //bytter scene til forsiden
     public void byttSceneHoved(ActionEvent event) throws IOException {
-        Parent HovedParent = FXMLLoader.load(getClass().getResource("scene.fxml"));
-        Scene HovedScene = new Scene(HovedParent);
+        Parent hovedParent = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        Scene JobbsokerScene = new Scene(hovedParent);
 
         //henter stage informasjon
-        Stage HovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        HovedStage.setScene(HovedScene);
-        HovedStage.show();
+        Stage hovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        hovedStage.setScene(JobbsokerScene);
+        hovedStage.show();
     }
 
     //Metode for scenebytte til Arbeidsgiver
@@ -46,4 +48,5 @@ public class JobbsokerController {
         VikariatStage.setTitle("Vikarbyrå - Vikariat");
         VikariatStage.show();
     }
+
 }

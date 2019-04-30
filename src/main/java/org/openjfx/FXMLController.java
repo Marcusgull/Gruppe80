@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,7 +16,8 @@ public class FXMLController {
 
     public void initialize() {}
 
-
+    @FXML
+    private ListView<Main> listView;
 
     //Metode for scenebytte til Arbeidsgiver
     public void byttSceneArbeidsgiver(ActionEvent event) throws IOException {
