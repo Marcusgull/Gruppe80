@@ -42,7 +42,6 @@ public class ArbeidsgiverController {
 
     public void saveObjectCSV(ActionEvent event) throws IOException {
         Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-
         FileSaveContext fileSaveContext = new FileSaveContext(new FileSaveCSV());
         fileSaveContext.lagreTilFil(mainStage, listView.getItems()
                 .get(listView.getSelectionModel().getSelectedIndex()));
@@ -61,6 +60,7 @@ public class ArbeidsgiverController {
 
         Stage hovedStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         hovedStage.setScene(JobbsokerScene);
+        hovedStage.setTitle("Vikarbyrå - Forside");
         hovedStage.show();
     }
 

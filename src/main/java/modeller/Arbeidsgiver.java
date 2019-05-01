@@ -2,7 +2,11 @@ package modeller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Arbeidsgiver{
+import java.io.Serializable;
+
+public class Arbeidsgiver implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public StringProperty Adresse = new SimpleStringProperty();
     public StringProperty Bransje = new SimpleStringProperty();
