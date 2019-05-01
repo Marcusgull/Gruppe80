@@ -44,7 +44,8 @@ public class ArbeidsgiverController {
         Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         FileSaveContext fileSaveContext = new FileSaveContext(new FileSaveCSV());
-        fileSaveContext.lagreTilFil(mainStage, listView.getSelectionModel().getSelectedItems());
+        fileSaveContext.lagreTilFil(mainStage, listView.getItems()
+                .get(listView.getSelectionModel().getSelectedIndex()));
 
     }
 

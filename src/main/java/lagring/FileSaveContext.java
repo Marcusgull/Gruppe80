@@ -2,14 +2,14 @@ package lagring;
 
 import javafx.stage.Stage;
 
-public class filLagringInnhold {
-    private FilLagringStrategy filLagringStrategy;
+public class FileSaveContext {
+    private FileSaveStrategy fileSaveStrategy;
 
-    public filLagringInnhold (FilLagringStrategy filLagringStrategy){
-        this.filLagringStrategy = filLagringStrategy;
+    public FileSaveContext (FileSaveStrategy fileSaveStrategy){
+        this.fileSaveStrategy = fileSaveStrategy;
     }
 
-    public void lagreTilFil (Stage stage, int verdi){
-        filLagringStrategy.lagre(stage, verdi);
+    public void lagreTilFil (Stage stage, Object obj){
+        fileSaveStrategy.lagre(stage, obj);
     }
 }
