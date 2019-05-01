@@ -14,19 +14,18 @@ public abstract class FileSaveStrategy {
     abstract void lagre (Stage stage, Object obj);
 
     public void LagreInnholdTilFil(File fil, Object obj){
-        File datafil = new File("/src/lagring.csv");
         try{
-            datafil.createNewFile();
-            //PrintWriter printWriter = new PrintWriter(fil);
-            FileWriter fw = new FileWriter(datafil, true);
+            FileWriter fw = new FileWriter(fil, true);
             if(obj instanceof Arbeidsgiver){
                 Arbeidsgiver a = (Arbeidsgiver) obj;
-                fw.append(a.data().getAdresse());
-                fw.append(a.data().getBransje());
-                fw.append(a.data().getTlf());
-                fw.append(a.data().getEmail());
-                fw.close();
+                String join = String.join(";", a.data().getAdresse()
+                        , a.data().getBransje()
+                        , a.data().getEmail()
+                        , a.data().getTlf() + "\n");
+                fw.write(join);
+
             }
+            fw.close();
         }
         catch (IOException e){
             System.out.println("en error");
