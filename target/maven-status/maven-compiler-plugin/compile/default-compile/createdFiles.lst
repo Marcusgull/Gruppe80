@@ -1,9 +1,8 @@
+lagring\FileSaveJOBJ.class
 modeller\Arbeidsgiver.class
 modeller\LedigeVikariater.class
-lagring\JOBJ.class
-lagring\CSV.class
+lagring\FileSaveContext.class
 org\openjfx\VikariatController.class
-lagring\filLagringInnhold.class
 modeller\Arbeidsgiver$Arbeidsmodell.class
 modeller\Jobbsoker.class
 modeller\Arbeidsforhold.class
@@ -11,5 +10,6 @@ org\openjfx\Main.class
 org\openjfx\ArbeidsgiverController.class
 org\openjfx\FXMLController.class
 module-info.class
+lagring\FileSaveCSV.class
 org\openjfx\JobbsokerController.class
-lagring\FilLagringStrategy.class
+lagring\FileSaveStrategy.class

@@ -8,10 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lagring.FileSaveCSV;
+import lagring.FileSaveContext;
 import modeller.Arbeidsgiver;
 
 import java.io.*;
-import java.util.stream.Collectors;
 
 public class ArbeidsgiverController {
 
@@ -36,6 +37,19 @@ public class ArbeidsgiverController {
         arbeidsgiver.Email.setValue(email.getText());
         arbeidsgiver.Tlf.setValue(tlf.getText());
         listView.getItems().add(arbeidsgiver);
+
+    }
+
+    public void saveObjectCSV(ActionEvent event) throws IOException {
+        Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        FileSaveContext fileSaveContext = new FileSaveContext(new FileSaveCSV());
+        fileSaveContext.lagreTilFil(mainStage, listView.getSelectionModel().getSelectedItems());
+
+    }
+
+    public void saveObjectJOBJ() {
+
     }
 
     //bytter scene til forsiden
