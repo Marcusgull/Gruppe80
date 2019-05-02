@@ -33,6 +33,11 @@ public class Arbeidsgiver implements Serializable {
             Tlf = tlf;
         }
 
+        public String hentString(){
+            String s = String.join(" | ", Adresse, Bransje, Email, Tlf);
+            return s;
+        }
+
         public void setAdresse(String adresse) { Adresse = adresse; }
         public void setBransje(String bransje) { Bransje = bransje; }
         public void setEmail(String email) { Email = email; }

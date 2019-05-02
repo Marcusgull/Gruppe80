@@ -55,6 +55,12 @@ public class Jobbsoker {
             this.ref = ref;
         }
 
+        public String hentString(){
+            String s = String.join(" | ", fnavn,enavn,tlf,
+                    email,alder,jobbKat,erfaring,lonnKrav,ref);
+            return s;
+        }
+
         public String getFnavn() {
             return fnavn;
         }

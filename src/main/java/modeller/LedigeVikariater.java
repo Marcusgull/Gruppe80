@@ -48,6 +48,13 @@ public class LedigeVikariater {
             this.Kvalifikasjoner = Kvalifikasjoner;
         }
 
+        public String hentString(){
+            String s = String.join(" | ", Sektor, Sted,
+                    Arbeidsgiver,Jobbkategori,Varighet, Arbeidstid,
+                    Stillingstype,Kvalifikasjoner);
+            return s;
+        }
+
         public String getSektor() {
             return Sektor;
         }

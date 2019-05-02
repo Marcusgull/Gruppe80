@@ -26,24 +26,96 @@ public class FXMLController {
     private ListView<String> listView;
 
     public void slett(){
+        Object slett = matcher();
+        listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
+        FileSaveStrategy.lagrede.remove(slett);
+
+        try{
+            FileWriter fw = new FileWriter("src/lagring.csv", false);
+            for(int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
+                Object obj = FileSaveStrategy.lagrede.get(i);
+
+                if (obj instanceof Arbeidsgiver) {
+                    String A = "Arbeidsgiver";
+                    Arbeidsgiver a = (Arbeidsgiver) obj;
+                    String join = String.join(";"
+                            , A
+                            , a.data().getAdresse()
+                            , a.data().getBransje()
+                            , a.data().getEmail()
+                            , a.data().getTlf() + "\n");
+                    fw.append(join);
+                } else if (obj instanceof Jobbsoker) {
+                    Jobbsoker j = (Jobbsoker) obj;
+                    String J = "Jobbsøker";
+                    String join = String.join(";"
+                            , J
+                            , j.data().getEnavn()
+                            , j.data().getFnavn()
+                            , j.data().getTlf()
+                            , j.data().getEmail()
+                            , j.data().getAlder()
+                            , j.data().getJobbKat()
+                            , j.data().getLønnKrav()
+                            , j.data().getErfaring()
+                            , j.data().getRef() + "\n");
+                    fw.append(join);
+                } else if (obj instanceof LedigeVikariater) {
+                    LedigeVikariater LV = (LedigeVikariater) obj;
+                    String lv = "Ledige Vikariater";
+                    String join = String.join(";"
+                            , lv
+                            , LV.data().getSektor()
+                            , LV.data().getSted()
+                            , LV.data().getArbeidsgiver()
+                            , LV.data().getJobbkategori()
+                            , LV.data().getVarighet()
+                            , LV.data().getArbeidstid()
+                            , LV.data().getStillingstype()
+                            , LV.data().getKvalifikasjoner() + "\n");
+                    fw.append(join);
+                }
+                fw.close();
+            }
+        }
+        catch (IOException e){
+            System.out.println("en error her");
+        }
     }
 
-    public void rediger() {
+    public void rediger(){
+        Object obj = matcher();
+
+        if(obj == null)
+            System.out.println("Finner ikke match");
+
+
+    }
+
+    public Object matcher() {
         String k = listView.getItems()
                 .get(listView.getSelectionModel()
                         .getSelectedIndex());
-        String[] deler = k.split(" | ");
         for (int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
             Object obj = FileSaveStrategy.lagrede.get(i);
-            for (int j = 0; j < deler.length; j=j+2){
-                if(obj instanceof Arbeidsgiver){
-                    Arbeidsgiver a = (Arbeidsgiver) obj;
-                    if(){
-                        System.out.println("match");
-                    }
+            if(obj instanceof Arbeidsgiver){
+                Arbeidsgiver a = (Arbeidsgiver) obj;
+                if(k.equals(a.data().hentString())){
+                    return a;
+                }
+            }else if(obj instanceof Jobbsoker){
+                Jobbsoker j = (Jobbsoker) obj;
+                if(k.equals(j.data().hentString())){
+                    return j;
+                }
+            }else if(obj instanceof  LedigeVikariater){
+                LedigeVikariater lv = (LedigeVikariater) obj;
+                if(k.equals(lv.data().hentString())){
+                    return lv;
                 }
             }
         }
+        return null;
     }
 
     public void initialize() {
@@ -56,26 +128,15 @@ public class FXMLController {
                 System.out.println(o.getClass());
                 if(o instanceof Jobbsoker){
                     Jobbsoker jobs = (Jobbsoker) o;
-                    Jobbsoker.Jobbsokermodell data = jobs.data();
-                    String info = String.join(" | ", data.getEnavn(), data.getFnavn(),
-                            data.getAlder(), data.getEmail(), data.getErfaring(),
-                            data.getJobbKat(), data.getLønnKrav(), data.getTlf(),
-                            data.getRef());
-                    System.out.println(info);
+                    String info = jobs.data().hentString();
                     listView.getItems().add(info);
                 }else if(o instanceof Arbeidsgiver){
                     Arbeidsgiver arb = (Arbeidsgiver) o;
-                    Arbeidsgiver.Arbeidsmodell data = arb.data();
-                    String info = String.join(" | ", data.getAdresse(),
-                            data.getBransje(), data.getEmail(), data.getTlf());
+                    String info = arb.data().hentString();
                     listView.getItems().add(info);
                 }else if(o instanceof LedigeVikariater){
                     LedigeVikariater lv = (LedigeVikariater) o;
-                    LedigeVikariater.LedigeVikariaterModell data = lv.data();
-                    String info = String.join(" | ", data.getSektor(),
-                            data.getSted(), data.getArbeidsgiver(), data.getJobbkategori(),
-                            data.getVarighet(), data.getArbeidstid(), data.getStillingstype(),
-                            data.getKvalifikasjoner());
+                    String info = lv.data().hentString();
                     listView.getItems().add(info);
                 }
             }
