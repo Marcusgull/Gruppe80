@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lagring.FileLoadCSV;
 import lagring.FileSaveCSV;
@@ -18,6 +19,8 @@ import lagring.FileSaveStrategy;
 import modeller.Arbeidsgiver;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ArbeidsgiverController {
     @FXML
@@ -43,9 +46,22 @@ public class ArbeidsgiverController {
                 }
             }
         }
+
+        if(FileSaveStrategy.redig != null){
+            Arbeidsgiver ag = (Arbeidsgiver) FileSaveStrategy.redig;
+            email.setText(ag.data().getEmail());
+            bransje.setText(ag.data().getBransje());
+            adresse.setText(ag.data().getAdresse());
+            tlf.setText(ag.data().getTlf());
+        }
     }
 
-    public void leggTil() {
+    public void leggTil(ActionEvent e) throws IOException {
+        if(FileSaveStrategy.redig != null){
+            redigerer(e);
+            return;
+        }
+
         if(adresse.getText().equals("") || bransje.getText().equals("")
                 || email.getText().equals("")
                 || tlf.getText().equals("")){
@@ -60,6 +76,17 @@ public class ArbeidsgiverController {
         arbeidsgiver.Tlf.setValue(tlf.getText());
         listView.getItems().add(arbeidsgiver);
         FileSaveStrategy.objList.add(arbeidsgiver);
+    }
+
+    public void redigerer(ActionEvent e) throws IOException {
+        FileSaveStrategy.lagrede.remove(FileSaveStrategy.redig);
+        Arbeidsgiver ab = new Arbeidsgiver();
+        ab.Adresse.setValue(adresse.getText());
+        ab.Bransje.setValue(bransje.getText());
+        ab.Email.setValue(email.getText());
+        ab.Tlf.setValue(tlf.getText());
+        FileSaveStrategy.lagrede.add(ab);
+        byttSceneHoved(e);
     }
 
     public void saveObjectCSV(ActionEvent event) throws IOException {

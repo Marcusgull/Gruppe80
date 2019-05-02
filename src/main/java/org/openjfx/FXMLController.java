@@ -29,7 +29,54 @@ public class FXMLController {
         Object slett = matcher();
         listView.getItems().remove(listView.getSelectionModel().getSelectedItem());
         FileSaveStrategy.lagrede.remove(slett);
+        listeLagrer();
+    }
 
+    public void rediger(ActionEvent e) throws IOException {
+        Object obj = matcher();
+
+        if(obj == null) {
+            System.out.println("Finner ikke match");
+            return;
+        }
+
+        FileSaveStrategy.redig = obj;
+        if(obj instanceof Arbeidsgiver){
+            byttSceneArbeidsgiver(e);
+        }else if(obj instanceof Jobbsoker){
+            byttSceneJobbsoker(e);
+        }else if(obj instanceof LedigeVikariater){
+            byttSceneVikariat(e);
+        }
+    }
+
+    public Object matcher() {
+        String k = listView.getItems()
+                .get(listView.getSelectionModel()
+                        .getSelectedIndex());
+        for (int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
+            Object obj = FileSaveStrategy.lagrede.get(i);
+            if(obj instanceof Arbeidsgiver){
+                Arbeidsgiver a = (Arbeidsgiver) obj;
+                if(k.equals(a.data().hentString())){
+                    return a;
+                }
+            }else if(obj instanceof Jobbsoker){
+                Jobbsoker j = (Jobbsoker) obj;
+                if(k.equals(j.data().hentString())){
+                    return j;
+                }
+            }else if(obj instanceof  LedigeVikariater){
+                LedigeVikariater lv = (LedigeVikariater) obj;
+                if(k.equals(lv.data().hentString())){
+                    return lv;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void listeLagrer(){
         try{
             FileWriter fw = new FileWriter("src/lagring.csv", false);
             for(int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
@@ -75,57 +122,29 @@ public class FXMLController {
                             , LV.data().getKvalifikasjoner() + "\n");
                     fw.append(join);
                 }
-                fw.close();
             }
+            fw.close();
         }
         catch (IOException e){
-            System.out.println("en error her");
+            e.printStackTrace();
         }
-    }
-
-    public void rediger(){
-        Object obj = matcher();
-
-        if(obj == null)
-            System.out.println("Finner ikke match");
-
-
-    }
-
-    public Object matcher() {
-        String k = listView.getItems()
-                .get(listView.getSelectionModel()
-                        .getSelectedIndex());
-        for (int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
-            Object obj = FileSaveStrategy.lagrede.get(i);
-            if(obj instanceof Arbeidsgiver){
-                Arbeidsgiver a = (Arbeidsgiver) obj;
-                if(k.equals(a.data().hentString())){
-                    return a;
-                }
-            }else if(obj instanceof Jobbsoker){
-                Jobbsoker j = (Jobbsoker) obj;
-                if(k.equals(j.data().hentString())){
-                    return j;
-                }
-            }else if(obj instanceof  LedigeVikariater){
-                LedigeVikariater lv = (LedigeVikariater) obj;
-                if(k.equals(lv.data().hentString())){
-                    return lv;
-                }
-            }
-        }
-        return null;
     }
 
     public void initialize() {
+
+        if(FileSaveStrategy.redig != null){
+            listeLagrer();
+            FileSaveStrategy.redig = null;
+        }
+
         FileLoadCSV s = new FileLoadCSV();
         FileSaveStrategy.lagrede = s.load();
+
+
         if(FileSaveStrategy.lagrede.size() > 0){
 
             for(int i = 0; i < FileSaveStrategy.lagrede.size(); i++) {
                 Object o = FileSaveStrategy.lagrede.get(i);
-                System.out.println(o.getClass());
                 if(o instanceof Jobbsoker){
                     Jobbsoker jobs = (Jobbsoker) o;
                     String info = jobs.data().hentString();
@@ -178,6 +197,4 @@ public class FXMLController {
         VikariatStage.setTitle("Vikarbyrå - Vikariat");
         VikariatStage.show();
     }
-
-
 }

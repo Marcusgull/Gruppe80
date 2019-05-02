@@ -1,9 +1,5 @@
 package lagring;
 
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
@@ -12,8 +8,6 @@ import modeller.LedigeVikariater;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -21,6 +15,7 @@ public abstract class FileSaveStrategy {
     abstract void lagre (Stage stage, Object obj);
     public static ArrayList<Object> objList = new ArrayList<>();
     public static ArrayList<Object> lagrede;
+    public static Object redig = null;
 
     public void LagreInnholdTilFil(File fil, Object obj){
         try{
