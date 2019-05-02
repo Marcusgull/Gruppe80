@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import lagring.FileLoadCSV;
 import lagring.FileSaveStrategy;
 import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
@@ -22,10 +23,13 @@ public class FXMLController {
     private ListView<String> listView;
 
     public void initialize() {
-        if(FileSaveStrategy.objList.size() > 0){
+        FileLoadCSV s = new FileLoadCSV();
+        FileSaveStrategy.lagrede = s.load();
+        if(FileSaveStrategy.lagrede.size() > 0){
 
-            for(int i = 0; i < FileSaveStrategy.objList.size(); i++) {
-                Object o = FileSaveStrategy.objList.get(i);
+            for(int i = 0; i < FileSaveStrategy.lagrede.size(); i++) {
+                Object o = FileSaveStrategy.lagrede.get(i);
+                System.out.println(o.getClass());
                 if(o instanceof Jobbsoker){
                     Jobbsoker jobs = (Jobbsoker) o;
                     Jobbsoker.Jobbsokermodell data = jobs.data();
@@ -42,7 +46,13 @@ public class FXMLController {
                             data.getBransje(), data.getEmail(), data.getTlf());
                     listView.getItems().add(info);
                 }else if(o instanceof LedigeVikariater){
-
+                    LedigeVikariater lv = (LedigeVikariater) o;
+                    LedigeVikariater.LedigeVikariaterModell data = lv.data();
+                    String info = String.join(" | ", data.getSektor(),
+                            data.getSted(), data.getArbeidsgiver(), data.getJobbkategori(),
+                            data.getVarighet(), data.getArbeidstid(), data.getStillingstype(),
+                            data.getKvalifikasjoner());
+                    listView.getItems().add(info);
                 }
             }
         }
@@ -74,7 +84,7 @@ public class FXMLController {
 
     //Metode for scenebytte til vikariat
     public void byttSceneVikariat(ActionEvent event) throws IOException {
-        Parent VikariatParent = FXMLLoader.load(getClass().getResource("Arbeidsgiver.fxml"));
+        Parent VikariatParent = FXMLLoader.load(getClass().getResource("Vikariat.fxml"));
         Scene VikariatScene = new Scene(VikariatParent);
 
         //henter stage informasjon

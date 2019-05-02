@@ -15,7 +15,7 @@ public class FileSaveCSV extends FileSaveStrategy {
         File fil = fileChooser.showOpenDialog(stage);
 
         if (fil != null){
-            this.LagreInnholdTilFil(fil);
+            this.LagreInnholdTilFil(fil, obj);
         }
     }
 

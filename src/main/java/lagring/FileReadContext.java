@@ -10,6 +10,6 @@ public class FileReadContext {
     }
 
     public void lastOppFraFil (Stage stage, Object obj){
-        fileReadStrategy.lastOpp(stage, obj);
+        fileReadStrategy.lastOpp();
     }
 }
