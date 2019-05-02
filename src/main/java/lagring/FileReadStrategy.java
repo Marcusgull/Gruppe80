@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public abstract class FileReadStrategy {
-    abstract void lastOpp(Stage stage, Object obj);
+    abstract void lastOpp();
 
     List<List<String>> records = new ArrayList<>();
 

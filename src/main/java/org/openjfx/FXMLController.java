@@ -22,6 +22,7 @@ public class FXMLController {
 
     public void initialize() {
         if(FileSaveStrategy.objList.size() > 0){
+
             for(int i = 0; i < FileSaveStrategy.objList.size(); i++) {
                 Object o = FileSaveStrategy.objList.get(i);
                 if(o instanceof Jobbsoker){
@@ -34,7 +35,11 @@ public class FXMLController {
                     System.out.println(info);
                     listView.getItems().add(info);
                 }else if(o instanceof Arbeidsgiver){
-
+                    Arbeidsgiver arb = (Arbeidsgiver) o;
+                    Arbeidsgiver.Arbeidsmodell data = arb.data();
+                    String info = String.join(" | ", data.getAdresse(),
+                            data.getBransje(), data.getEmail(), data.getTlf());
+                    listView.getItems().add(info);
                 }else if(o instanceof LedigeVikariater){
 
                 }

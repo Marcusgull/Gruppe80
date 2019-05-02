@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lagring.FileLoadCSV;
 import lagring.FileSaveCSV;
 import lagring.FileSaveContext;
 import lagring.FileSaveStrategy;
@@ -50,6 +51,10 @@ public class ArbeidsgiverController {
         FileSaveStrategy.objList.add(arbeidsgiver);
     }
 
+    public void leggTilIListe(Arbeidsgiver ab){
+        listView.getItems().add(ab);
+    }
+
     public void saveObjectCSV(ActionEvent event) throws IOException {
         Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FileSaveContext fileSaveContext = new FileSaveContext(new FileSaveCSV());
@@ -59,7 +64,12 @@ public class ArbeidsgiverController {
     }
 
     public void saveObjectJOBJ() {
-
+        FileLoadCSV s = new FileLoadCSV();
+        s.lastOpp();
+        for(int i = 0; i < FileSaveStrategy.objList.size(); i++){
+            Arbeidsgiver a = (Arbeidsgiver) FileSaveStrategy.objList.get(i);
+            listView.getItems().add(a);
+        }
     }
 
     //bytter scene til forsiden
