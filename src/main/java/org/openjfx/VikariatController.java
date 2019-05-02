@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -35,6 +36,8 @@ public class VikariatController {
     private TextField stillingstype;
     @FXML
     private TextField kvalifikasjoner;
+    @FXML
+    private Label alert;
 
     public void initialize(){
         if(FileSaveStrategy.objList.size() > 0){
@@ -48,6 +51,17 @@ public class VikariatController {
     }
 
     public void leggTil() {
+        if(sektor.getText().equals("") || sted.getText().equals("")
+                || arbeidsgiver.getText().equals("")
+                || jobbkategori.getText().equals("")
+                || varighet.getText().equals("")
+                || arbeidstid.getText().equals("")
+                || stillingstype.getText().equals("")
+                || kvalifikasjoner.getText().equals("")){
+            alert.setText("Må fylle ut alle felter!");
+            return;
+        }
+        alert.setText("");
         LedigeVikariater ledigeVikariater = new LedigeVikariater();
         ledigeVikariater.Sektor.setValue(sektor.getText());
         ledigeVikariater.Sted.setValue(sted.getText());

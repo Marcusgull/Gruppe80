@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -41,6 +42,8 @@ public class JobbsokerController {
     private TextField lonnsKrav;
     @FXML
     private TextField ref;
+    @FXML
+    private Label alert;
 
     public void initialize(){
         if(FileSaveStrategy.objList.size() > 0){
@@ -54,6 +57,17 @@ public class JobbsokerController {
     }
 
     public void leggTil() {
+        if(fnavn.getText().equals("") || enavn.getText().equals("")
+                || tlf.getText().equals("")
+                || email.getText().equals("")
+                || alder.getText().equals("")
+                || erfaring.getText().equals("")
+                || lonnsKrav.getText().equals("")
+                || ref.getText().equals("")){
+            alert.setText("Må fylle ut alle felter!");
+            return;
+        }
+        alert.setText("");
         Jobbsoker jobbsoker = new Jobbsoker();
         jobbsoker.fnavn.setValue(fnavn.getText());
         jobbsoker.enavn.setValue(enavn.getText());

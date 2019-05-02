@@ -42,6 +42,11 @@
         </Pane>
         <Pane layoutY="90.0" prefHeight="265.0" prefWidth="700.0">
             <children>
+            <Label fx:id="alert" layoutX="245.0" layoutY="74.0" prefHeight="96.0" prefWidth="142.0" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
                 <TextField fx:id="adresse" layoutX="90.0" layoutY="30.0" promptText="Adresse">
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

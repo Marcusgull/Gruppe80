@@ -80,6 +80,11 @@
                </padding>
             </TextField>
             <ListView fx:id="listView" layoutX="428.0" layoutY="130.0" prefHeight="90.0" prefWidth="229.0" />
+            <Label fx:id="alert" layoutX="121.0" layoutY="223.0" prefHeight="37.0" prefWidth="229.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
         <Pane id="LowerToolBar" layoutY="355.0" prefHeight="45.0" prefWidth="700.0" style="-fx-background-color: #00e8e8;">

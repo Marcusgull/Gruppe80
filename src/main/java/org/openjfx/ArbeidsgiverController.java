@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,6 +31,8 @@ public class ArbeidsgiverController {
     private TextField email;
     @FXML
     private TextField tlf;
+    @FXML
+    private Label alert;
 
     public void initialize(){
         if(FileSaveStrategy.objList.size() > 0){
@@ -43,6 +46,13 @@ public class ArbeidsgiverController {
     }
 
     public void leggTil() {
+        if(adresse.getText().equals("") || bransje.getText().equals("")
+                || email.getText().equals("")
+                || tlf.getText().equals("")){
+            alert.setText("Må fylle ut alle felter!");
+            return;
+        }
+        alert.setText("");
         Arbeidsgiver arbeidsgiver = new Arbeidsgiver();
         arbeidsgiver.Adresse.setValue(adresse.getText());
         arbeidsgiver.Bransje.setValue(bransje.getText());
@@ -62,7 +72,6 @@ public class ArbeidsgiverController {
 
     public void saveObjectJOBJ() {
     }
-
 
     //bytter scene til forsiden
     public void byttSceneHoved(ActionEvent event) throws IOException {
