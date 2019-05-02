@@ -19,18 +19,21 @@ public abstract class FileSaveStrategy {
         try{
             FileWriter fw = new FileWriter(fil, true);
             if(obj instanceof Arbeidsgiver){
+                String A = "Arbeidsgiver";
                 Arbeidsgiver a = (Arbeidsgiver) obj;
                 String join = String.join(";"
+                        , A
                         , a.data().getAdresse()
                         , a.data().getBransje()
                         , a.data().getEmail()
                         , a.data().getTlf() + "\n");
                 fw.write(join);
-
             }
             if(obj instanceof Jobbsoker) {
                 Jobbsoker j = (Jobbsoker) obj;
+                String J = "Jobbsøker";
                 String join = String.join(";"
+                        , J
                         , j.data().getEnavn()
                         , j.data().getFnavn()
                         , j.data().getTlf()
@@ -44,7 +47,9 @@ public abstract class FileSaveStrategy {
             }
             if(obj instanceof LedigeVikariater) {
                 LedigeVikariater LV = (LedigeVikariater) obj;
+                String lv = "Ledige Vikariater";
                 String join = String.join(";"
+                        ,lv
                         , LV.data().getSektor()
                         , LV.data().getSted()
                         , LV.data().getArbeidsgiver()
