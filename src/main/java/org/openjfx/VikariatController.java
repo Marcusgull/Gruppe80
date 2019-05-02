@@ -77,7 +77,12 @@ public class VikariatController {
         byttSceneHoved(e);
     }
 
-    public void leggTil() {
+    public void leggTil(ActionEvent e) throws IOException {
+        if(FileSaveStrategy.redig != null){
+            redigerer(e);
+            return;
+        }
+
         if(sektor.getText().equals("") || sted.getText().equals("")
                 || arbeidsgiver.getText().equals("")
                 || jobbkategori.getText().equals("")

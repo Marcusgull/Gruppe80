@@ -42,7 +42,6 @@ public class FileLoadCSV extends FileReadStrategy {
                     j.ref.setValue(deler[9]);
                     list.add(j);
                 }else if(deler[0].equals("Ledige Vikariater")){
-                    System.out.println("WUT");
                     LedigeVikariater lv = new LedigeVikariater();
                     lv.Sektor.setValue(deler[1]);
                     lv.Sted.setValue(deler[2]);

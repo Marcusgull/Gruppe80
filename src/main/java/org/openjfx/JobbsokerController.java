@@ -54,9 +54,27 @@ public class JobbsokerController {
                 }
             }
         }
+
+        if(FileSaveStrategy.redig != null){
+            Jobbsoker j = (Jobbsoker) FileSaveStrategy.redig;
+            enavn.setText(j.data().getEnavn());
+            fnavn.setText(j.data().getFnavn());
+            tlf.setText(j.data().getTlf());
+            email.setText(j.data().getEmail());
+            alder.setText(j.data().getAlder());
+            jobbKat.setText(j.data().getJobbKat());
+            erfaring.setText(j.data().getErfaring());
+            lonnsKrav.setText(j.data().getLønnKrav());
+            ref.setText(j.data().getRef());
+        }
     }
 
-    public void leggTil() {
+    public void leggTil(ActionEvent e) throws IOException {
+        if(FileSaveStrategy.redig != null){
+            redigerer(e);
+            return;
+        }
+
         if(fnavn.getText().equals("") || enavn.getText().equals("")
                 || tlf.getText().equals("")
                 || email.getText().equals("")
@@ -81,6 +99,23 @@ public class JobbsokerController {
         listView.getItems().add(jobbsoker);
         FileSaveStrategy.objList.add(jobbsoker);
     }
+
+    public void redigerer(ActionEvent e) throws IOException {
+        FileSaveStrategy.lagrede.remove(FileSaveStrategy.redig);
+        Jobbsoker j = new Jobbsoker();
+        j.enavn.setValue(enavn.getText());
+        j.fnavn.setValue(fnavn.getText());
+        j.tlf.setValue(tlf.getText());
+        j.email.setValue(email.getText());
+        j.alder.setValue(alder.getText());
+        j.jobbKat.setValue(jobbKat.getText());
+        j.erfaring.setValue(erfaring.getText());
+        j.lonnsKrav.setValue(lonnsKrav.getText());
+        j.ref.setValue(ref.getText());
+        FileSaveStrategy.lagrede.add(j);
+        byttSceneHoved(e);
+    }
+
     public void saveObjectCSV(ActionEvent event) throws IOException {
         Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FileSaveContext fileSaveContext = new FileSaveContext(new FileSaveCSV());
