@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lagring.FileReadContext;
+import lagring.FileReadStrategy;
 import lagring.FileSaveCSV;
 import lagring.FileSaveContext;
 import lagring.FileSaveStrategy;
@@ -48,6 +50,10 @@ public class ArbeidsgiverController {
         arbeidsgiver.Tlf.setValue(tlf.getText());
         listView.getItems().add(arbeidsgiver);
         FileSaveStrategy.objList.add(arbeidsgiver);
+    }
+
+    public void les(){
+
     }
 
     public void saveObjectCSV(ActionEvent event) throws IOException {

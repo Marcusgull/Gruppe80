@@ -13,6 +13,7 @@ import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
 import modeller.LedigeVikariater;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class FXMLController {
@@ -77,4 +78,6 @@ public class FXMLController {
         VikariatStage.setTitle("Vikarbyrå - Vikariat");
         VikariatStage.show();
     }
+
+
 }

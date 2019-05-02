@@ -23,11 +23,11 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+/*
     public void SceneController(String fxmlFil){
        HashMap<String, Pane> screen = new HashMap<>();
     }
-
+*/
     public static void main(String[] args) {
         launch(args);
     }
