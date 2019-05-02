@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lagring.FileSaveCSV;
 import lagring.FileSaveContext;
-import modeller.Jobbsoker;
+import lagring.FileSaveStrategy;
 import modeller.LedigeVikariater;
 
 import java.io.IOException;
@@ -36,6 +36,17 @@ public class VikariatController {
     @FXML
     private TextField kvalifikasjoner;
 
+    public void initialize(){
+        if(FileSaveStrategy.objList.size() > 0){
+            for(int i = 0; i < FileSaveStrategy.objList.size(); i++){
+                if(FileSaveStrategy.objList.get(i) instanceof LedigeVikariater){
+                    LedigeVikariater a =(LedigeVikariater) FileSaveStrategy.objList.get(i);
+                    listView.getItems().add(a);
+                }
+            }
+        }
+    }
+
     public void leggTil() {
         LedigeVikariater ledigeVikariater = new LedigeVikariater();
         ledigeVikariater.Sektor.setValue(sektor.getText());
@@ -47,6 +58,7 @@ public class VikariatController {
         ledigeVikariater.Stillingstype.setValue(stillingstype.getText());
         ledigeVikariater.Kvalifikasjoner.setValue(kvalifikasjoner.getText());
         listView.getItems().add(ledigeVikariater);
+        FileSaveStrategy.objList.add(ledigeVikariater);
     }
     public void saveObjectCSV(ActionEvent event) throws IOException {
         Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

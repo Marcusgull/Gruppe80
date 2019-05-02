@@ -13,5 +13,6 @@ org\openjfx\FXMLController.class
 module-info.class
 lagring\FileSaveCSV.class
 org\openjfx\JobbsokerController.class
+lagring\FileReadStrategy.class
 modeller\LedigeVikariater$LedigeVikariaterModell.class
 lagring\FileSaveStrategy.class

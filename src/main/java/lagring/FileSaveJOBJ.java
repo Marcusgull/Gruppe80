@@ -18,4 +18,8 @@ public class FileSaveJOBJ extends FileSaveStrategy {
             this.LagreInnholdTilFil(fil, obj);
         }
     }
+
+    public void serialisereTilFil(File fil, Object obj){
+
+    }
 }

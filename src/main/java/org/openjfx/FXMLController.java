@@ -6,18 +6,41 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import lagring.FileSaveStrategy;
+import modeller.Arbeidsgiver;
+import modeller.Jobbsoker;
+import modeller.LedigeVikariater;
 
 import java.io.IOException;
 
 public class FXMLController {
 
-    public void initialize() {}
-
     @FXML
-    private ListView<Main> listView;
+    private ListView<String> listView;
+
+    public void initialize() {
+        if(FileSaveStrategy.objList.size() > 0){
+            for(int i = 0; i < FileSaveStrategy.objList.size(); i++) {
+                Object o = FileSaveStrategy.objList.get(i);
+                if(o instanceof Jobbsoker){
+                    Jobbsoker jobs = (Jobbsoker) o;
+                    Jobbsoker.Jobbsokermodell data = jobs.data();
+                    String info = String.join(" | ", data.getEnavn(), data.getFnavn(),
+                            data.getAlder(), data.getEmail(), data.getErfaring(),
+                            data.getJobbKat(), data.getLønnKrav(), data.getTlf(),
+                            data.getRef());
+                    System.out.println(info);
+                    listView.getItems().add(info);
+                }else if(o instanceof Arbeidsgiver){
+
+                }else if(o instanceof LedigeVikariater){
+
+                }
+            }
+        }
+    }
 
     //Metode for scenebytte til Arbeidsgiver
     public void byttSceneArbeidsgiver(ActionEvent event) throws IOException {

@@ -10,13 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lagring.FileSaveCSV;
 import lagring.FileSaveContext;
+import lagring.FileSaveStrategy;
 import modeller.Arbeidsgiver;
 
 import java.io.*;
 
 public class ArbeidsgiverController {
-
-    public void initialize(){ }
 
     @FXML
     private ListView<Arbeidsgiver> listView;
@@ -30,6 +29,17 @@ public class ArbeidsgiverController {
     @FXML
     private TextField tlf;
 
+    public void initialize(){
+        if(FileSaveStrategy.objList.size() > 0){
+            for(int i = 0; i < FileSaveStrategy.objList.size(); i++){
+                if(FileSaveStrategy.objList.get(i) instanceof Arbeidsgiver){
+                    Arbeidsgiver a =(Arbeidsgiver) FileSaveStrategy.objList.get(i);
+                    listView.getItems().add(a);
+                }
+            }
+        }
+    }
+
     public void leggTil() {
         Arbeidsgiver arbeidsgiver = new Arbeidsgiver();
         arbeidsgiver.Adresse.setValue(adresse.getText());
@@ -37,7 +47,7 @@ public class ArbeidsgiverController {
         arbeidsgiver.Email.setValue(email.getText());
         arbeidsgiver.Tlf.setValue(tlf.getText());
         listView.getItems().add(arbeidsgiver);
-
+        FileSaveStrategy.objList.add(arbeidsgiver);
     }
 
     public void saveObjectCSV(ActionEvent event) throws IOException {

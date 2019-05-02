@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lagring.FileSaveCSV;
 import lagring.FileSaveContext;
+import lagring.FileSaveStrategy;
+import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
 
 import java.io.IOException;
@@ -40,6 +42,17 @@ public class JobbsokerController {
     @FXML
     private TextField ref;
 
+    public void initialize(){
+        if(FileSaveStrategy.objList.size() > 0){
+            for(int i = 0; i < FileSaveStrategy.objList.size(); i++){
+                if(FileSaveStrategy.objList.get(i) instanceof Jobbsoker){
+                    Jobbsoker a =(Jobbsoker) FileSaveStrategy.objList.get(i);
+                    listView.getItems().add(a);
+                }
+            }
+        }
+    }
+
     public void leggTil() {
         Jobbsoker jobbsoker = new Jobbsoker();
         jobbsoker.fnavn.setValue(fnavn.getText());
@@ -52,6 +65,7 @@ public class JobbsokerController {
         jobbsoker.lonnsKrav.setValue(lonnsKrav.getText());
         jobbsoker.ref.setValue(ref.getText());
         listView.getItems().add(jobbsoker);
+        FileSaveStrategy.objList.add(jobbsoker);
     }
     public void saveObjectCSV(ActionEvent event) throws IOException {
         Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

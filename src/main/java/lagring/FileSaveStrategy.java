@@ -10,10 +10,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 public abstract class FileSaveStrategy {
     abstract void lagre (Stage stage, Object obj);
+    public static ArrayList<Object> objList = new ArrayList<>();
 
     public void LagreInnholdTilFil(File fil, Object obj){
         try{
