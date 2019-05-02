@@ -9,7 +9,4 @@ public class FileReadContext {
         this.fileReadStrategy = fileReadStrategy;
     }
 
-    public void lastOppFraFil (Stage stage, Object obj){
-        fileReadStrategy.lastOpp();
-    }
 }

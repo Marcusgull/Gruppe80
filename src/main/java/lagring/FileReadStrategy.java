@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class FileReadStrategy {
-    abstract void lastOpp();
+    abstract ArrayList<Object> load();
 
     static void readFile() throws IOException {
         List<List<String>> liste = new ArrayList<>();

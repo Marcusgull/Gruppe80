@@ -1,5 +1,8 @@
 package org.openjfx;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +24,27 @@ public class FXMLController {
 
     @FXML
     private ListView<String> listView;
+
+    public void slett(){
+    }
+
+    public void rediger() {
+        String k = listView.getItems()
+                .get(listView.getSelectionModel()
+                        .getSelectedIndex());
+        String[] deler = k.split(" | ");
+        for (int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
+            Object obj = FileSaveStrategy.lagrede.get(i);
+            for (int j = 0; j < deler.length; j=j+2){
+                if(obj instanceof Arbeidsgiver){
+                    Arbeidsgiver a = (Arbeidsgiver) obj;
+                    if(){
+                        System.out.println("match");
+                    }
+                }
+            }
+        }
+    }
 
     public void initialize() {
         FileLoadCSV s = new FileLoadCSV();

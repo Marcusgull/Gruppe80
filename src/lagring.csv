@@ -1,11 +1,3 @@
-Arbeidsgiver;hdai;hhih;ihih;hihih
-Arbeidsgiver;lol;lol;lol;lol
-Arbeidsgiver;hai;hai;hai;hi
-Jobbsøker;qwf;qwefq;qwfqwf;qwf;qwfqwf;qwfq;wfqwfqwf;;qwfqf
-Jobbsøker;qwd;dwqd;qwd;qwdqw;dqwdqw;qwd;qwdq;;dqwd
-Jobbsøker;qwdq;afqwd;dqwd;dqwd;qwdq;wdqw;dqwdq;qwdq;wdqwd
-Jobbsøker;etter;for;tlf;emal;alder;jobbkat;lønnk;erfaring;ref
-Arbeidsgiver;add;bran;email;tlf
-Arbeidsgiver;dw;wd;wd;wd
-Ledige Vikariater;sektor;sted;arbeidsgiver;jobbkat;varighet;arbeidstid;stillingtyp;kval
-Ledige Vikariater;hei;det;er; jeg;som;ringer;til;deg
+Arbeidsgiver;Adresse;Bransje;Email;Tlf
+Jobbsøker;Etternavn;Fornavn;Tlf;Email;Alder;Jobbkat;Lønnskrav;Erfaring;Ref
+Ledige Vikariater;Sektor;Sted;Arbeidsgiver;Jobbkategori;Varighet;Arbeidstifd;Stillingstype;Kvalikk

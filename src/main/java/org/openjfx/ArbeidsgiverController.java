@@ -1,4 +1,6 @@
 package org.openjfx;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lagring.FileLoadCSV;
-import lagring.FileReadContext;
-import lagring.FileReadStrategy;
 import lagring.FileSaveCSV;
 import lagring.FileSaveContext;
 import lagring.FileSaveStrategy;
@@ -19,7 +19,6 @@ import modeller.Arbeidsgiver;
 import java.io.*;
 
 public class ArbeidsgiverController {
-
     @FXML
     private ListView<Arbeidsgiver> listView;
 
@@ -62,13 +61,8 @@ public class ArbeidsgiverController {
     }
 
     public void saveObjectJOBJ() {
-        FileLoadCSV s = new FileLoadCSV();
-        s.lastOpp();
-        for(int i = 0; i < FileSaveStrategy.objList.size(); i++){
-            Arbeidsgiver a = (Arbeidsgiver) FileSaveStrategy.objList.get(i);
-            listView.getItems().add(a);
-        }
     }
+
 
     //bytter scene til forsiden
     public void byttSceneHoved(ActionEvent event) throws IOException {

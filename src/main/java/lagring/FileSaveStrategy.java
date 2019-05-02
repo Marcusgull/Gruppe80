@@ -1,5 +1,9 @@
 package lagring;
 
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
