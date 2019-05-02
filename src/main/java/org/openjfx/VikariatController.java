@@ -48,6 +48,33 @@ public class VikariatController {
                 }
             }
         }
+        if(FileSaveStrategy.redig != null){
+            LedigeVikariater lv = (LedigeVikariater) FileSaveStrategy.redig;
+            sektor.setText(lv.data().getSektor());
+            sted.setText(lv.data().getSted());
+            arbeidsgiver.setText(lv.data().getArbeidsgiver());
+            jobbkategori.setText(lv.data().getJobbkategori());
+
+            varighet.setText(lv.data().getVarighet());
+            arbeidstid.setText(lv.data().getArbeidstid());
+            stillingstype.setText(lv.data().getStillingstype());
+            kvalifikasjoner.setText(lv.data().getKvalifikasjoner());
+        }
+    }
+
+    public void redigerer(ActionEvent e) throws IOException {
+        FileSaveStrategy.lagrede.remove(FileSaveStrategy.redig);
+        LedigeVikariater lv = new LedigeVikariater();
+        lv.Sektor.setValue(sektor.getText());
+        lv.Sted.setValue(sted.getText());
+        lv.Arbeidsgiver.setValue(arbeidsgiver.getText());
+        lv.Jobbkategori.setValue(jobbkategori.getText());
+        lv.Varighet.setValue(varighet.getText());
+        lv.Arbeidstid.setValue(arbeidstid.getText());
+        lv.Stillingstype.setValue(stillingstype.getText());
+        lv.Kvalifikasjoner.setValue(kvalifikasjoner.getText());
+        FileSaveStrategy.lagrede.add(lv);
+        byttSceneHoved(e);
     }
 
     public void leggTil() {
