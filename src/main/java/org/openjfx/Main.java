@@ -10,6 +10,12 @@ import javafx.stage.Stage;
 
 import java.util.HashMap;
 
+/**
+ * Medlemmer:
+ *  Kandidat: 804
+ *  Kandidat: 817
+ *  Kandidat: 590
+ */
 
 public class Main extends Application {
 

@@ -8,10 +8,10 @@ public class Arbeidsgiver implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    public StringProperty Adresse = new SimpleStringProperty();
-    public StringProperty Bransje = new SimpleStringProperty();
-    public StringProperty Email = new SimpleStringProperty();
-    public StringProperty Tlf = new SimpleStringProperty();
+    public transient StringProperty Adresse = new SimpleStringProperty();
+    public transient StringProperty Bransje = new SimpleStringProperty();
+    public transient StringProperty Email = new SimpleStringProperty();
+    public transient StringProperty Tlf = new SimpleStringProperty();
 
     public Arbeidsmodell data(){
         return new Arbeidsmodell(Adresse.get()
