@@ -66,20 +66,25 @@ public abstract class   FileSaveStrategy {
         }
     }
     public void Serialisering(File fil, Object object) {
-        String file = "file.ser";
         try {
-            String filename = "src/lagring.jobj";
-
             FileOutputStream fileOutputStream = new FileOutputStream(fil);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
+            if(object instanceof Arbeidsgiver){
+                Arbeidsgiver a = (Arbeidsgiver) object;
+                objectOutputStream.writeObject(a);
+                objectOutputStream.writeChars(a.data().getAdresse());
+                objectOutputStream.writeChars(a.data().getBransje());
+                objectOutputStream.writeChars((a.data().getEmail()));
+                objectOutputStream.writeChars(a.data().getTlf());
+            }
+
             //metode for serialisering av objekt
-            objectOutputStream.writeObject(object);
             objectOutputStream.close();
             fileOutputStream.close();
         }
         catch (IOException ioe) {
-            System.out.println("IOEXCEPTION");
+            ioe.printStackTrace();
         }
         System.out.println("Objektet er serialisert");
     }
@@ -93,6 +98,12 @@ public abstract class   FileSaveStrategy {
 
             //metode for deserialisering av objekt
             object = objectInputStream.readObject();
+            if(object instanceof Arbeidsgiver){
+                ((Arbeidsgiver) object).Adresse.setValue(objectInputStream.readUTF());
+                ((Arbeidsgiver) object).Bransje.setValue(objectInputStream.readUTF());
+                ((Arbeidsgiver) object).Email.setValue(objectInputStream.readUTF());
+                ((Arbeidsgiver) object).Tlf.setValue(objectInputStream.readUTF());
+            }
         }
         catch (IOException ioe){
             System.out.println("IOEXCEPTION");
