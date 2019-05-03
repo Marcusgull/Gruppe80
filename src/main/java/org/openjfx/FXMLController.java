@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import lagring.FileLoadCSV;
+import lagring.FileSaveJOBJ;
 import lagring.FileSaveStrategy;
 import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
@@ -19,11 +20,15 @@ import modeller.LedigeVikariater;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class FXMLController {
 
     @FXML
     private ListView<String> listView;
+
+    @FXML
+    private ListView<String> listView1;
 
     public void slett(){
         Object slett = matcher();
@@ -51,9 +56,7 @@ public class FXMLController {
     }
 
     public Object matcher() {
-        String k = listView.getItems()
-                .get(listView.getSelectionModel()
-                        .getSelectedIndex());
+        String k = listView.getSelectionModel().getSelectedItem();
         for (int i = 0; i < FileSaveStrategy.lagrede.size(); i++){
             Object obj = FileSaveStrategy.lagrede.get(i);
             if(obj instanceof Arbeidsgiver){
@@ -160,6 +163,20 @@ public class FXMLController {
                 }
             }
         }
+
+        /*FileSaveJOBJ jobj = new FileSaveJOBJ();
+        jobj.Deserialisering();
+
+        if(FileSaveStrategy.jobjLagrede.size() > 0){
+            for(int i = 0; i < FileSaveStrategy.jobjLagrede.size(); i++){
+                Object obj = FileSaveStrategy.jobjLagrede.get(i);
+                if(obj instanceof Arbeidsgiver){
+                    Arbeidsgiver ab = (Arbeidsgiver) obj;
+                    String info = ab.data().hentString();
+                    listView1.getItems().add(info);
+                }
+            }
+        }*/
     }
 
     //Metode for scenebytte til Arbeidsgiver

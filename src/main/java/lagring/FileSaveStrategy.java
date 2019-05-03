@@ -13,6 +13,7 @@ public abstract class   FileSaveStrategy {
     abstract void lagre (Stage stage, Object obj);
     public static ArrayList<Object> objList = new ArrayList<>();
     public static ArrayList<Object> lagrede;
+    public static ArrayList<Object> jobjLagrede;
     public static Object redig = null;
 
     public void LagreInnholdTilFil(File fil, Object obj) {
@@ -92,21 +93,24 @@ public abstract class   FileSaveStrategy {
     public void Deserialisering(){
         Object object = null;
         String file ="file.ser";
+        jobjLagrede = new ArrayList<>();
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
             //metode for deserialisering av objekt
             object = objectInputStream.readObject();
-            if(object instanceof Arbeidsgiver){
+            if(object instanceof  Arbeidsgiver){
                 ((Arbeidsgiver) object).Adresse.setValue(objectInputStream.readUTF());
                 ((Arbeidsgiver) object).Bransje.setValue(objectInputStream.readUTF());
                 ((Arbeidsgiver) object).Email.setValue(objectInputStream.readUTF());
                 ((Arbeidsgiver) object).Tlf.setValue(objectInputStream.readUTF());
             }
+
+            jobjLagrede.add(object);
         }
         catch (IOException ioe){
-            System.out.println("IOEXCEPTION");
+            ioe.printStackTrace();
         }
         catch (ClassNotFoundException cnfe){
             System.out.println("fant ikke fil");

@@ -1,15 +1,12 @@
 package lagring;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class FileReadStrategy {
+public abstract class FileReadStrategy implements Serializable {
     abstract ArrayList<Object> load();
 
     static void readFile() throws IOException {

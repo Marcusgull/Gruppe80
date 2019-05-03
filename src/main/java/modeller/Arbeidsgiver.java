@@ -6,8 +6,6 @@ import java.io.Serializable;
 
 public class Arbeidsgiver implements Serializable{
 
-    private static final long serialVersionUID = 1L;
-
     public transient StringProperty Adresse = new SimpleStringProperty();
     public transient StringProperty Bransje = new SimpleStringProperty();
     public transient StringProperty Email = new SimpleStringProperty();
