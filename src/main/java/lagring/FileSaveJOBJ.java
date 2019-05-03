@@ -15,11 +15,7 @@ public class FileSaveJOBJ extends FileSaveStrategy {
         File fil = fileChooser.showOpenDialog(stage);
 
         if (fil != null){
-            this.LagreInnholdTilFil(fil, obj);
+            this.Serialisering(fil, obj);
         }
-    }
-
-    public void serialisereTilFil(File fil, Object obj){
-
     }
 }

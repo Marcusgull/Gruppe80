@@ -5,7 +5,7 @@ import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
 
-public class LedigeVikariater {
+public class LedigeVikariater  implements Serializable{
 
     public StringProperty Sektor = new SimpleStringProperty();
     public StringProperty Sted = new SimpleStringProperty();
@@ -27,7 +27,7 @@ public class LedigeVikariater {
                 ,Kvalifikasjoner.get());
     }
 
-    public class LedigeVikariaterModell {
+    public class LedigeVikariaterModell  implements Serializable{
         private String Sektor;
         private String Sted;
         private String Arbeidsgiver;

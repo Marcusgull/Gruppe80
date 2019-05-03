@@ -5,20 +5,18 @@ import modeller.Arbeidsgiver;
 import modeller.Jobbsoker;
 import modeller.LedigeVikariater;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 
-public abstract class FileSaveStrategy {
+public abstract class   FileSaveStrategy {
     abstract void lagre (Stage stage, Object obj);
     public static ArrayList<Object> objList = new ArrayList<>();
     public static ArrayList<Object> lagrede;
     public static Object redig = null;
 
-    public void LagreInnholdTilFil(File fil, Object obj){
-        try{
+    public void LagreInnholdTilFil(File fil, Object obj) {
+        try {
             FileWriter fw = new FileWriter(fil, true);
 
             if (obj instanceof Arbeidsgiver) {
@@ -63,9 +61,46 @@ public abstract class FileSaveStrategy {
             }
 
             fw.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println("en error");
         }
+    }
+    public void Serialisering(File fil, Object object) {
+        String file = "file.ser";
+        try {
+            String filename = "src/lagring.jobj";
+
+            FileOutputStream fileOutputStream = new FileOutputStream(fil);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            //metode for serialisering av objekt
+            objectOutputStream.writeObject(object);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        }
+        catch (IOException ioe) {
+            System.out.println("IOEXCEPTION");
+        }
+        System.out.println("Objektet er serialisert");
+    }
+
+    public void Deserialisering(){
+        Object object = null;
+        String file ="file.ser";
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            //metode for deserialisering av objekt
+            object = objectInputStream.readObject();
+        }
+        catch (IOException ioe){
+            System.out.println("IOEXCEPTION");
+        }
+        catch (ClassNotFoundException cnfe){
+            System.out.println("fant ikke fil");
+        }
+        System.out.println("deserialisert");
+        FileSaveStrategy.objList.add(object);
     }
 }

@@ -12,10 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import lagring.FileLoadCSV;
-import lagring.FileSaveCSV;
-import lagring.FileSaveContext;
-import lagring.FileSaveStrategy;
+import lagring.*;
 import modeller.Arbeidsgiver;
 
 import java.io.*;
@@ -97,7 +94,11 @@ public class ArbeidsgiverController {
 
     }
 
-    public void saveObjectJOBJ() {
+    public void saveObjectJOBJ(ActionEvent event) throws IOException {
+        Stage mainStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FileSaveContext fileSaveContext = new FileSaveContext(new FileSaveJOBJ());
+        fileSaveContext.lagreTilFil(mainStage, listView.getItems()
+        .get(listView.getSelectionModel().getSelectedIndex()));
     }
 
     //bytter scene til forsiden

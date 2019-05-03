@@ -4,7 +4,7 @@ import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
 
-public class Arbeidsgiver implements Serializable {
+public class Arbeidsgiver implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -20,7 +20,7 @@ public class Arbeidsgiver implements Serializable {
                 , Tlf.get());
     }
 
-    public static class Arbeidsmodell{
+    public class Arbeidsmodell  implements Serializable{
         private String Adresse;
         private String Bransje;
         private String Email;

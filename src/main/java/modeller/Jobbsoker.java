@@ -6,7 +6,7 @@ import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
 
-public class Jobbsoker {
+public class Jobbsoker implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class Jobbsoker {
                 ,ref.get());
     }
 
-    public class Jobbsokermodell {
+    public class Jobbsokermodell  implements Serializable{
         private String fnavn;
         private String enavn;
         private String tlf;
